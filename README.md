@@ -32,4 +32,4 @@ cmake -S . -B build ; cmake --build build
 You can then run the project by finding the executable for your platform in the build directory.
 
 ## Documentation
-The documentation for this template is created by Doxygen. To read it, simply open the `docs/html/index.html` file.
+The documentation for this template is created by Doxygen. To read it, simply open https://yot360.github.io/sdl2-game-template/.
