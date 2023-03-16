@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(SDL2 CONFIG REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_image REQUIRED)
+find_package(SDL2_mixer REQUIRED)
 
 # To download files
 include(FetchContent)
@@ -19,7 +20,7 @@ FetchContent_MakeAvailable(json)
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Game.cpp src/Game.h src/InputHandler.cpp src/InputHandler.h src/TTFManager.cpp src/TTFManager.h src/ConfigHelper.cpp src/ConfigHelper.h)
+add_executable(${PROJECT_NAME} src/main.cpp src/Game.cpp src/Game.h src/InputHandler.cpp src/InputHandler.h src/TTFManager.cpp src/TTFManager.h src/ConfigHelper.cpp src/ConfigHelper.h src/SoundManager.cpp src/SoundManager.h)
 
 # STATIC stuff for Windows
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
@@ -28,10 +29,10 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
     if(MINGW)
         # To detect Windows compilers
-        target_link_libraries(${PROJECT_NAME} SDL2::SDL2main SDL2::SDL2 SDL2_ttf::SDL2_ttf SDL2_image::SDL2_image nlohmann_json::nlohmann_json mingw32)
+        target_link_libraries(${PROJECT_NAME} SDL2::SDL2main SDL2::SDL2 SDL2_ttf::SDL2_ttf SDL2_image::SDL2_image SDL2_mixer::SDL2_mixer nlohmann_json::nlohmann_json mingw32)
     elseif(WIN32)
         # To detect Windows operating system in general
-        target_link_libraries(${PROJECT_NAME} SDL2::SDL2main SDL2::SDL2 SDL2_ttf::SDL2_ttf SDL2_image::SDL2_image nlohmann_json::nlohmann_json)
+        target_link_libraries(${PROJECT_NAME} SDL2::SDL2main SDL2::SDL2 SDL2_ttf::SDL2_ttf SDL2_image::SDL2_image SDL2_mixer::SDL2_mixer nlohmann_json::nlohmann_json)
     endif()
 
     # Copy SDL2 dlls to build folder
@@ -65,5 +66,5 @@ else()
 endif()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    target_link_libraries(${PROJECT_NAME} SDL2::SDL2main SDL2::SDL2 SDL2_ttf::SDL2_ttf SDL2_image::SDL2_image  nlohmann_json::nlohmann_json)
+    target_link_libraries(${PROJECT_NAME} SDL2::SDL2main SDL2::SDL2 SDL2_ttf::SDL2_ttf SDL2_image::SDL2_image SDL2_mixer::SDL2_mixer nlohmann_json::nlohmann_json)
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")

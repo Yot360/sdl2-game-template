@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['update_0',['Update',['../class_game.html#a1c5373c68261c54aff03e6abe40fee52',1,'Game']]],
-  ['updatekeystates_1',['updateKeyStates',['../class_input_handler.html#a679b2700804f1d44d2b3e4214c86df2f',1,'InputHandler']]]
+  ['pausesound_0',['pauseSound',['../class_sound_manager.html#a757a1d7c3db3f2b072cf38da05c55e02',1,'SoundManager']]],
+  ['playsound_1',['playSound',['../class_sound_manager.html#a8f29abb522bedb7a6fc782ec45113172',1,'SoundManager']]]
 ];

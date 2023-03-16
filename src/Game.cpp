@@ -62,6 +62,12 @@ bool Game::Initialize()
         std::cout << TTF_GetError() << std::endl;
     }
 
+    // Load background music
+    // soundManager.loadSound("Assets/background_music.ogg", "bg_music");
+
+    // Play background music
+    // soundManager.playSound("bg_music");
+
     return true;
 }
 

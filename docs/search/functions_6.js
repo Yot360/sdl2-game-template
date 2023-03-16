@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writetext_0',['WriteText',['../class_t_t_f_manager.html#ac8b6a4c88f0ebcfe11a9974d84103a44',1,'TTFManager']]]
+  ['resumesound_0',['resumeSound',['../class_sound_manager.html#a10841b9633919fffa6af9fff7d037944',1,'SoundManager']]]
 ];

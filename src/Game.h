@@ -9,6 +9,7 @@
 #include "InputHandler.h"
 #include "TTFManager.h"
 #include "ConfigHelper.h"
+#include "SoundManager.h"
 
 class Game
 {
@@ -86,6 +87,8 @@ private:
     int frameCount = 0;
 
     int thing;
+
+    SoundManager soundManager;
 
 public:
     Game(Game const&) = delete;
