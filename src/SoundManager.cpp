@@ -1,12 +1,5 @@
 #include "SoundManager.h"
 
-SoundManager::SoundManager() {
-    // Initialize SDL_mixer library
-    if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) < 0) {
-        printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-    }
-}
-
 SoundManager::~SoundManager() {
     // Free all loaded sounds
     for (auto const& sound : sounds) {
@@ -16,33 +9,34 @@ SoundManager::~SoundManager() {
     Mix_CloseAudio();
 }
 
-bool SoundManager::loadSound(std::string filepath, std::string name) {
+bool SoundManager::LoadSound(std::string filepath, std::string name) {
     // Load sound file and add to map
     Mix_Chunk* sound = Mix_LoadWAV(filepath.c_str());
     if (sound == NULL) {
-        printf("Failed to load sound file %s! SDL_mixer Error: %s\n", filepath.c_str(), Mix_GetError());
+        printf("Failed to load sound file %s\n SDL_mixer Error: %s\n", filepath.c_str(), Mix_GetError());
         return false;
     }
+    std::cout << "Sound loaded successfully: " << filepath << std::endl;
     sounds.insert(std::pair<std::string, Mix_Chunk*>(name, sound));
     return true;
 }
 
-void SoundManager::playSound(std::string name) {
+void SoundManager::PlaySound(std::string name) {
     // Play sound with given name
     Mix_PlayChannel(-1, sounds[name], 0);
 }
 
-void SoundManager::stopSound(std::string name) {
+void SoundManager::StopSound(std::string name) {
     // Stop playing sound with given name
     Mix_HaltChannel(-1);
 }
 
-void SoundManager::pauseSound(std::string name) {
+void SoundManager::PauseSound(std::string name) {
     // Pause playing sound with given name
     Mix_Pause(-1);
 }
 
-void SoundManager::resumeSound(std::string name) {
+void SoundManager::ResumeSound(std::string name) {
     // Resume playing sound with given name
     Mix_Resume(-1);
 }

@@ -20,7 +20,7 @@ FetchContent_MakeAvailable(json)
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Game.cpp src/Game.h src/InputHandler.cpp src/InputHandler.h src/TTFManager.cpp src/TTFManager.h src/ConfigHelper.cpp src/ConfigHelper.h src/SoundManager.cpp src/SoundManager.h)
+add_executable(${PROJECT_NAME} src/main.cpp src/Game.cpp src/Game.h src/InputHandler.cpp src/InputHandler.h src/TTFManager.cpp src/TTFManager.h src/ConfigHelper.cpp src/ConfigHelper.h src/SoundManager.cpp src/SoundManager.h src/AssetsManager.cpp src/AssetsManager.h)
 
 # STATIC stuff for Windows
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")

@@ -10,25 +10,25 @@ void InputHandler::Initialize()
     memcpy(keyHeldStates, keyStates, keyLength);
 }
 
-void InputHandler::updateKeyStates()
+void InputHandler::UpdateKeyStates()
 {
     //Copying the keyboard state into the previous keyboard state array at the end of the frame
     memcpy(keyHeldStates, keyStates, keyLength);
 }
 
 // Check if a key is currently pressed
-bool InputHandler::isKeyDown(SDL_Scancode key)
+bool InputHandler::IsKeyDown(SDL_Scancode key)
 {
     return (keyStates[key] != 0);
 }
 
 // Check if a key was just pressed (i.e. not held down)
-bool InputHandler::isKeyPressed(SDL_Scancode key)
+bool InputHandler::IsKeyPressed(SDL_Scancode key)
 {
     return (keyHeldStates[key]) == 0 && (keyStates[key] != 0);
 }
 
-bool InputHandler::isKeyReleased(SDL_Scancode key)
+bool InputHandler::IsKeyReleased(SDL_Scancode key)
 {
     return (keyHeldStates[key] != 0) && (keyStates[key] == 0);
 }

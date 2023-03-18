@@ -1,19 +1,18 @@
 #include <SDL_mixer.h>
 #include <string>
 #include <map>
+#include <iostream>
 
 class SoundManager {
 public:
 
-    /**
-     * Default constructor that initializes SDL_mixer.
-     */
-    SoundManager();
+    static SoundManager& getInstance() {
+        static SoundManager instance;
+        return instance;
+    }
 
-    /**
-     * Destructor that frees all loaded sounds and closes SDL_mixer.
-     */
-    ~SoundManager();
+    SoundManager(SoundManager const&) = delete;
+    void operator=(SoundManager const&) = delete;
 
     /**
      * Loads a sound effect from a file.
@@ -21,32 +20,36 @@ public:
      * @param name The name to assign to the loaded sound effect.
      * @return True if the sound effect was loaded successfully, false otherwise.
      */
-    bool loadSound(std::string filepath, std::string name);
+    bool LoadSound(std::string filepath, std::string name);
 
     /**
      * Plays a loaded sound effect.
      * @param name The name of the sound effect to play.
      */
-    void playSound(std::string name);
+    void PlaySound(std::string name);
 
     /**
      * Stops a playing sound effect.
      * @param name The name of the sound effect to stop.
      */
-    void stopSound(std::string name);
+    void StopSound(std::string name);
 
     /**
      * Pauses a playing sound effect.
      * @param name The name of the sound effect to pause.
      */
-    void pauseSound(std::string name);
+    void PauseSound(std::string name);
 
     /**
      * Resumes a paused sound effect.
      * @param name The name of the sound effect to resume.
      */
-    void resumeSound(std::string name);
+    void ResumeSound(std::string name);
     
 private:
+
+    SoundManager() = default;
+    ~SoundManager();
+
     std::map<std::string, Mix_Chunk*> sounds;
 };

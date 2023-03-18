@@ -6,29 +6,36 @@
 
 bool Game::Initialize()
 {
-    //Initialize SDL
+    // Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         std::cout << "SDL could not initialize! SDL_Error: %s\n" << SDL_GetError() << std::endl;
         return false;
     }
 
-    //Initialize SDL_ttf
+    // Initialize SDL_ttf
     if (TTF_Init() == -1)
     {
         std::cout << "SDL_ttf could not initialize! SDL_ttf Error: %s\n" << TTF_GetError() << std::endl;
         return false;
     }
 
-    //Initialize PNG loading
+    // Initialize PNG loading
     int imgFlags = IMG_INIT_PNG;
     if( !( IMG_Init( imgFlags ) & imgFlags ) )
     {
-        printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+        std::cout << "SDL_image could not initialize! SDL_image Error: %s\n" << IMG_GetError() << std::endl;
         return false;
     }
 
-    //Create window
+    // Initialize SDL_mixer
+    if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024) < 0) 
+    {
+        std::cout << "SDL_mixer could not initialize! SDL_mixer Error: %s\n" << Mix_GetError() << std::endl;
+        return false;
+    }
+
+    // Create window
     Uint32 flags = SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN;
     window = SDL_CreateWindow("Project", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, flags);
     if (window == nullptr)
@@ -60,13 +67,17 @@ bool Game::Initialize()
     if (font == nullptr)
     {
         std::cout << TTF_GetError() << std::endl;
+        return false;
     }
 
     // Load background music
-    // soundManager.loadSound("Assets/background_music.ogg", "bg_music");
+    // SoundManager::getInstance().LoadSound("Assets/background_music.ogg", "bg_music");
 
     // Play background music
-    // soundManager.playSound("bg_music");
+    // SoundManager::getInstance().PlaySound("bg_music");
+
+    // Load texture
+    AssetsManager::getInstance().LoadTexture("Assets/cube.png", "cube", renderer);
 
     return true;
 }
@@ -82,7 +93,7 @@ void Game::Update()
     }
 
     // Update key states
-    InputHandler::getInstance().updateKeyStates();
+    InputHandler::getInstance().UpdateKeyStates();
 
     // Increment the frame count
     frameCount++;
@@ -98,6 +109,9 @@ void Game::Draw()
 
     TTFManager::getInstance().WriteText(renderer, font, 40, "Hello World", White, 10, 10);
 
+    // Draw loaded texture
+    // AssetsManager::getInstance().DrawTexture(renderer, "cube", 10, 10, 100, 100);
+
     // Render the screen
     SDL_RenderPresent(renderer);
 }
@@ -107,11 +121,11 @@ void Game::Clean()
     // Save best score
     ConfigHelper::getInstance().SaveJson();
 
-    //Destroy window/renderer
+    // Destroy window/renderer
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 
-    //Quit SDL subsystems
+    // Quit SDL subsystems
     TTF_Quit();
     SDL_Quit();
 }

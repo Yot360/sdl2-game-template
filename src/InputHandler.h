@@ -28,31 +28,31 @@ public:
      * @brief This function is used to update the keyboard states
      * @return void
      */
-    void updateKeyStates();
+    void UpdateKeyStates();
 
     /**
-     * isKeyDown bool function
+     * IsKeyDown bool function
      * @brief This function is used to check if a key is held down
      * @param key the scancode for the SDL key
      * @return Returns a bool that tells if the key is held down
      */
-    bool isKeyDown(SDL_Scancode key);
+    bool IsKeyDown(SDL_Scancode key);
 
     /**
-     * isKeyPressed bool function
+     * IsKeyPressed bool function
      * @brief This function is used to check if a key is pressed
      * @param key the scancode for the SDL key
      * @return Returns a bool that tells if the key is pressed
      */
-    bool isKeyPressed(SDL_Scancode key);
+    bool IsKeyPressed(SDL_Scancode key);
 
     /**
-     * isKeyReleased bool function
+     * IsKeyReleased bool function
      * @brief This function is used to check if a key is released
      * @param key the scancode for the SDL key
      * @return Returns a bool that tells if the key is released
      */
-    bool isKeyReleased(SDL_Scancode key);
+    bool IsKeyReleased(SDL_Scancode key);
 
 private:
     InputHandler() {};
