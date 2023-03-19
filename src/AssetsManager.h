@@ -1,3 +1,10 @@
+//
+// Created by yot on 19/03/23.
+//
+
+#ifndef ASSETSMANAGER_H
+#define ASSETSMANAGER_H
+
 #include <SDL_image.h>
 #include <map>
 #include <string>
@@ -29,3 +36,6 @@ public:
     AssetsManager(AssetsManager const&) = delete;
     void operator=(AssetsManager const&) = delete;
 };
+
+
+#endif // ASSETSMANAGER_H

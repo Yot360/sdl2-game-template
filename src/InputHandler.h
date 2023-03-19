@@ -1,6 +1,9 @@
 //
-// Created by yot on 23/02/23.
+// Created by yot on 19/03/23.
 //
+
+#ifndef INPUTHANDLER_H
+#define INPUTHANDLER_H
 
 #include <SDL.h>
 #include <string.h>
@@ -66,3 +69,6 @@ public:
     void operator=(InputHandler const&) = delete;
 
 };
+
+
+#endif // INPUTHANDLER_H

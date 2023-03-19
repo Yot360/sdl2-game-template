@@ -1,3 +1,7 @@
+//
+// Created by yot on 19/03/23.
+//
+
 #include "AssetsManager.h"
 
 bool AssetsManager::LoadTexture(std::string filePath, std::string id, SDL_Renderer* renderer) {

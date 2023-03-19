@@ -1,6 +1,9 @@
 //
-// Created by yot on 23/02/23.
+// Created by yot on 19/03/23.
 //
+
+#ifndef TTFMANAGER_H
+#define TTFMANAGER_H
 
 #include <SDL_ttf.h>
 #include <string>
@@ -37,3 +40,6 @@ public:
     void operator=(TTFManager const&) = delete;
 
 };
+
+
+#endif // TTFMANAGER_H

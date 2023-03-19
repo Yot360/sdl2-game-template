@@ -1,6 +1,9 @@
 //
-// Created by yot on 23/02/23.
+// Created by yot on 19/03/23.
 //
+
+#ifndef GAME_H
+#define GAME_H
 
 #include <iostream>
 #include <SDL.h>
@@ -93,3 +96,6 @@ public:
     Game(Game const&) = delete;
     void operator=(Game const&) = delete;
 };
+
+
+#endif // GAME_H

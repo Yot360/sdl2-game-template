@@ -1,3 +1,10 @@
+//
+// Created by yot on 19/03/23.
+//
+
+#ifndef SOUNDMANAGER_H
+#define SOUNDMANAGER_H
+
 #include <SDL_mixer.h>
 #include <string>
 #include <map>
@@ -53,3 +60,6 @@ private:
 
     std::map<std::string, Mix_Chunk*> sounds;
 };
+
+
+#endif // SOUNDMANAGER_H
